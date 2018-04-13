@@ -8,8 +8,9 @@ public class MainApp {
         }
 
         Sort sort = new Sort();
-        sort.selectionSort(data, data.length);
-
+//        sort.selectionSort(data, data.length);
+//        sort.bubbleSort(data, data.length);
+        sort.improveBubbleSort(data, data.length);
         System.out.println("\nAfter");
         for (int element: data) {
             System.out.print(element + " ");
