@@ -1,5 +1,5 @@
 public class MainApp {
-    public static void main(String args[]){
+    public static void main(String args[]) throws Exception {
         int data[] = {8, 31, 48, 73, 3, 65, 20, 29, 11, 15};
 
         System.out.println("Previous");
@@ -8,14 +8,18 @@ public class MainApp {
         }
 
         Sort sort = new Sort();
-        sort.insertionSort(data, data.length);
+        Search search = new Search();
 //        sort.selectionSort(data, data.length);
 //        sort.bubbleSort(data, data.length);
 //        sort.improveBubbleSort(data, data.length);
-        System.out.println("\nAfter");
-        for (int element: data) {
-            System.out.print(element + " ");
-        }
+//        sort.insertionSort(data, data.length);
+        int targetIndex = search.binarySearch(data, data.length);
+        System.out.println("target index : "+targetIndex );
+
+//        System.out.println("\nAfter");
+//        for (int element: data) {
+//            System.out.print(element + " ");
+//        }
 
     }
 
