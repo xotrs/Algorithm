@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sort {
 
     public void insertionSort(int data[], int MAX){
@@ -59,6 +61,83 @@ public class Sort {
                 }
             }
             if(sorted) return;
+        }
+    }
+
+    public void heapSort(int data[], int MAX){
+        MAX -= 1;
+
+        makeHeapTree(data, MAX);
+        for(int i = MAX; i >= 1; i--){
+            System.out.println("test : "+i);
+
+            int temp = data[0];
+            data[0] = data[i];
+            data[i] = temp;
+
+            MAX -= 1;
+
+            heapify(data, 0, MAX);
+        }
+        System.out.println(Arrays.toString(data));
+    }
+
+    private void heapify(int data[], int i, int MAX){
+        int leftNodeIndex = i * 2 + 1;
+        int rightNodeIndex = i * 2 + 2;
+
+
+        System.out.println("parentNodeIndex : "+i);
+        System.out.println("leftNodeIndex : "+leftNodeIndex);
+        System.out.println("rightNodeIndex : "+rightNodeIndex);
+        System.out.println("---------------------------------");
+
+
+        System.out.println("parentNodeValue : "+data[i]);
+        if(leftNodeIndex < MAX){
+            System.out.println("leftNodeValue : "+data[leftNodeIndex]);
+        }
+
+        if(rightNodeIndex < MAX){
+            System.out.println("rightNodeValue : "+data[rightNodeIndex]);
+        }
+
+        int largestIndex;
+
+        if(leftNodeIndex > MAX || rightNodeIndex > MAX){
+            System.out.println("Have a no child");
+
+            return;
+        }
+
+        if(data[leftNodeIndex] >= data[rightNodeIndex]){
+            largestIndex = leftNodeIndex;
+        }else{
+            largestIndex = rightNodeIndex;
+        }
+
+        if(data[i] >= data[largestIndex]) {
+            return;
+        }else{
+            int temp = data[i];
+            data[i] = data[largestIndex];
+            data[largestIndex] = temp;
+
+            heapify(data, largestIndex, MAX);
+        }
+
+        System.out.println(Arrays.toString(data));
+
+
+
+    }
+
+    public void makeHeapTree(int data[], int MAX) {
+        for (int i = MAX / 2; i >= 0; i--) {
+            System.out.println("\n");
+            System.out.println(MAX);
+            System.out.println(i);
+            heapify(data, i, MAX);
         }
     }
 }
