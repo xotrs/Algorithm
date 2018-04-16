@@ -5,7 +5,6 @@ public class MainApp {
 //        int data[] = {9, 4, 3, 10, 5, 8, 7, 6, 2, 1};
 //        int data[] = {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
 //        int data[] = {1, 3, 5, 7, 9, 11, 13, 15, 14, 12, 10, 8, 6, 4, 2};
-//        int data[] = {6, 4, 3, 7, 5, 1, 2};
         int data[] = {6, 4, 3, 7, 5, 1, 2};
 
         System.out.println("Previous");
