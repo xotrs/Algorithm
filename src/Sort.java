@@ -1,6 +1,54 @@
 import java.util.Arrays;
 
 public class Sort {
+    public void mergeSort(int data[], int left, int right){
+        int middle;
+
+        if(left < right){
+            middle = (left + right) / 2;
+
+            mergeSort(data, left, middle);
+            mergeSort(data, middle+1, right);
+            merge(data, left, middle, right);
+        }
+    }
+
+    private void merge(int[] data, int left, int middle, int right) {
+        int i = left;
+        int j = middle + 1;
+        int k = left; // 결과 배열 인덱스
+
+        int tempArray[] = new int[data.length];
+
+        // left .. middle , middle .. right 까지 비교
+        while(i <= middle && j <= right){
+            if(data[i] < data[j]){  //left index가 더 작으면 새로운 배열에 넣고 인덱스 증가
+                tempArray[k] = data[i];
+                i++;
+            }else{ //right index가 더 작으면 새로운 배열에 넣고 인덱스 증가
+                tempArray[k] = data[j];
+                j++;
+            }
+            k++;
+        }
+        //right index가 남아 있을 때 순차적으로 새로운 배열에 밀어넣음
+        if(i > middle){
+            for(int m = j; m <= right; m++){
+                tempArray[k] = data[m];
+                k++;
+            }
+        //left index가 남아 있을 때 순차적으로 새로운 배열에 밀어넣음
+        }else{
+            for(int m = i; m <= middle; m++){
+                tempArray[k] = data[m];
+                k++;
+            }
+        }
+
+        for(int m = left; m <= right; m++){
+            data[m] = tempArray[m];
+        }
+    }
 
     public void insertionSort(int data[], int MAX){
         for(int i=1; i<MAX; i++){
